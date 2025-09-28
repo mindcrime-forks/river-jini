@@ -53,6 +53,8 @@ public class SecurityInitializer {
     
     @Init
     public void initialize() {
+
+         
         Security.doPrivileged(new PrivilegedAction() {
 
             public Object run() {
@@ -64,7 +66,7 @@ public class SecurityInitializer {
 
                 context.put(org.apache.river.container.Strings.SECURITY_POLICY, policy);
 
-                System.setSecurityManager(new SecurityManager());
+                // System.setSecurityManager(new SecurityManager());
 
                 Policy installedPolicy = Policy.getPolicy();
                 if (installedPolicy != policy) {
@@ -74,7 +76,8 @@ public class SecurityInitializer {
                 return null;
             }
         });
-
+        
+        
         log.log(Level.INFO, MessageNames.SECURITY_INIT_SUCCEEDED);
 
     }
